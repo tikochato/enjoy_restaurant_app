@@ -4,3 +4,4 @@ target 'Enjoy Restaurants' do
 	project 'Enjoy Restaurants.xcodeproj'
 	pod 'OneSignal', '2.13.1'
 end
+pod 'Firebase/Analytics'
