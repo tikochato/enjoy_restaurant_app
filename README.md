@@ -22,5 +22,7 @@ brew cask info adoptopenjdk
 
 brew cask install java
 
+ionic cordova platform add android
+
 ionic cordova prepare android
 ionic cordova run android -l [--verbose]

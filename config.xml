@@ -3,7 +3,7 @@
     <name>Enjoy Restaurants</name>
     <description>An awesome Ionic/Cordova app.</description>
     <author email="info@enjoyapp.com" href="http://enjoyapp.com/">Enjoy App Team</author>
-    <content original-src="index.html" src="http://localhost:8100" />
+    <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
@@ -127,5 +127,4 @@
     <plugin name="cordova-plugin-nativeaudio" spec="^3.0.9" />
     <engine name="android" spec="8.1.0" />
     <engine name="ios" spec="4.5.5" />
-    <allow-navigation href="http://localhost:8100" sessionid="5e6949c7" />
 </widget>
