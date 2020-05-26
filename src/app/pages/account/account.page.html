@@ -17,12 +17,26 @@
       <ion-label class="location" style="color: black;">{{open}} - {{close}}</ion-label>
 
       <div class="flex_div">
-        <ion-label (click)="goToAddCategoty()">{{'Add Category' | translate}}</ion-label>
-        <ion-label (click)="AddFoods()">{{'Add Food' | translate}}</ion-label>
-        <ion-label (click)="venueDetails()">{{'Edit Profile' | translate}}</ion-label>
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <div>
+                <ion-button expand="block" (click)="goToAddCategoty()">{{'Add Category' | translate}}</ion-button>
+              </div>
+            </ion-col>
+            <ion-col>
+              <div>
+                <ion-button expand="block" (click)="AddFoods()">{{'Add Food' | translate}}</ion-button>
+              </div>
+            </ion-col>
+            <ion-col>
+              <div>
+                <ion-button expand="block" (click)="venueDetails()">{{'Edit Profile' | translate}}</ion-button>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
       </div>
-
-
 
       <div class="segment_div">
         <ion-label [class.active]="seg_id == 1" (click)="changeSegment(1)">{{'Reviews' | translate}}</ion-label>

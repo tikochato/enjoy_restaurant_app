@@ -37,7 +37,7 @@ export class VenueProfilePage implements OnInit {
   address: any = '';
   descritions: any = '';
   haveData: boolean = false;
-  dishPrice: any = '';
+  deliveryCharge: any = '';
   time: any = '';
   latitude: any;
   longitude: any;
@@ -75,7 +75,7 @@ export class VenueProfilePage implements OnInit {
       lat: this.latitude,
       lng: this.longitude,
       cover: this.coverImage,
-      dishPrice: this.dishPrice,
+      deliveryCharge: this.deliveryCharge,
       time: this.time,
       ratting: 0,
       cusine: this.cusine,
@@ -128,7 +128,7 @@ export class VenueProfilePage implements OnInit {
       lat: this.latitude,
       lng: this.longitude,
       cover: this.coverImage,
-      dishPrice: this.dishPrice,
+      deliveryCharge: this.deliveryCharge,
       time: this.time,
       cusine: this.cusine,
       openTime: this.openTime,
@@ -164,7 +164,7 @@ export class VenueProfilePage implements OnInit {
 
   submit() {
     console.log('cusine', this.cusine);
-    if (this.name === '' || this.address === '' || this.descritions === '' || this.dishPrice === '' || this.time === '' ||
+    if (this.name === '' || this.address === '' || this.descritions === '' || this.deliveryCharge === '' || this.time === '' ||
       !this.cusine || !this.cusine.length || this.openTime === '' || this.closeTime === '' || !this.openTime ||
       !this.closeTime || this.phone === '' || !this.phone) {
       this.util.errorToast(this.util.translate('All Fields are required'));
@@ -265,7 +265,7 @@ export class VenueProfilePage implements OnInit {
         this.latitude = data.lat;
         this.longitude = data.lng;
         this.time = data.time;
-        this.dishPrice = data.dishPrice;
+        this.deliveryCharge = data.deliveryCharge;
         this.cusine = data.cusine;
         this.openTime = data.openTime;
         this.closeTime = data.closeTime;

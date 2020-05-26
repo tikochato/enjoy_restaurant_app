@@ -152,5 +152,6 @@
     "Current Month": "Current Month",
     "Print": "Print",
     "New Notification": "New Notification",
-    "No Active Driver Found": "No Active Driver Found"
+    "No Active Driver Found": "No Active Driver Found",
+    "currencyCode": "$"
 }

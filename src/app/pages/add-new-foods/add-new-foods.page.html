@@ -3,15 +3,9 @@
     <ion-buttons slot="start">
       <ion-back-button mode="md" text=""></ion-back-button>
     </ion-buttons>
-    <!-- <ion-title>{{isEdit ? 'Edit Food':'Add Food' }}</ion-title> -->
 
     <ion-title *ngIf="isEdit">{{'Edit Food' | translate}}</ion-title>
-
     <ion-title *ngIf="!isEdit">{{'Add Food' | translate}}</ion-title>
-
-    <!-- <ion-button *ngIf="isEdit == true" slot="end" class="delete_icn" icli fill="clear">
-      Delete
-    </ion-button> -->
 
   </ion-toolbar>
 </ion-header>
@@ -26,30 +20,19 @@
         </ion-select>
       </ion-item>
       <ion-item>
-        <ion-input [(ngModel)]="name" type="text" [placeholder]="('Food Name' | translate )"></ion-input>
+        <ion-label position="floating">{{'Food Name' | translate }}<ion-text color="danger">*</ion-text>
+        </ion-label>
+        <ion-input [(ngModel)]="name" type="text"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-input [(ngModel)]="price" type="number" [placeholder]="('Price' | translate )"></ion-input>
+        <ion-label position="floating">{{'Price' | translate }} ({{'currencyCode' | translate }})<ion-text
+            color="danger">*</ion-text>
+        </ion-label>
+        <ion-input [(ngModel)]="price" type="number"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-label>{{'Variation' | translate}}</ion-label>
-        <ion-toggle slot="end" [(ngModel)]="variation"></ion-toggle>
-      </ion-item>
-      <ion-item *ngIf="variation">
-        <ion-input [(ngModel)]="smallPrice" type="number" [placeholder]="('Small Price' | translate )"></ion-input>
-      </ion-item>
-      <ion-item *ngIf="variation">
-        <ion-input [(ngModel)]="mediumPrice" type="number" [placeholder]="('Medium Price' | translate )"></ion-input>
-      </ion-item>
-      <ion-item *ngIf="variation">
-        <ion-input [(ngModel)]="largePrice" type="number" [placeholder]="('Large Price' | translate )"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label>{{'Veg' | translate}}</ion-label>
-        <ion-toggle slot="end" [(ngModel)]="veg"></ion-toggle>
-      </ion-item>
-      <ion-item>
-        <ion-textarea [(ngModel)]="descriptions" rows="5" [placeholder]="('Short descriptions' | translate )"></ion-textarea>
+        <ion-label position="floating">{{'Short descriptions' | translate }}</ion-label>
+        <ion-textarea [(ngModel)]="descriptions" rows="5"></ion-textarea>
       </ion-item>
       <ion-item>
         <ion-label>{{'Status' | translate}}</ion-label>

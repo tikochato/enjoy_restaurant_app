@@ -15,8 +15,9 @@
     <ion-searchbar class="ion-no-padding" mode="ios" [(ngModel)]="address" (ionInput)="updateSearch()"
       (click)="openMap()" (ionCancel)="dismiss()">
     </ion-searchbar>
-    <p class="lbl">{{'Per Person Dish' |translate}} $</p>
-    <ion-input class="inputText" [(ngModel)]="dishPrice" type="number" placeholder="$"></ion-input>
+    <p class="lbl">{{'Delivery Charge' |translate}} {{'currencyCode' | translate}}</p>
+    <p class="lbl-disclaimer">{{'Delivery Disclaimer' |translate}}</p>
+    <ion-input class="inputText" [(ngModel)]="deliveryCharge" type="number" placeholder="('currencyCode' | translate)"></ion-input>
 
     <p class="lbl">{{'E-mail ID' | translate}}</p>
     <ion-input class="inputText" [(ngModel)]="email" type="email" placeholder="email"></ion-input>
@@ -35,7 +36,7 @@
     </ion-item>
 
 
-    <p class="lbl">{{'Estimated Delivery time' | translate}}</p>
+    <p class="lbl">{{'Estimated Delivery time' | translate}} (min.)</p>
     <ion-item lines="none" class="ion-no-padding">
       <ion-datetime [(ngModel)]="time" display-format="mm" placeholder="Selecte time"></ion-datetime>
     </ion-item>

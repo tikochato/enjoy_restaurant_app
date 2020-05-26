@@ -93,8 +93,7 @@
         <ion-label class="head_gray">{{'ITEMS' | translate}}</ion-label>
         <div class="small_lbl">
           <ion-label *ngFor="let order of orders">{{order.quantiy}} X {{order.name}} <span
-              class="prize">${{order.price}}</span></ion-label>
-          <!-- <ion-label>1 X Bhaji Pav <span class="prize">$20</span></ion-label> -->
+              class="prize">{{'currencyCode' | translate}} {{order.price}}</span></ion-label>
         </div>
         <ion-label class="head_gray">{{'ORDERED ON' | translate}}</ion-label>
         <ion-label class="small_lbl">{{time}} </ion-label>
@@ -105,11 +104,10 @@
     <div class="card_div2">
 
       <div class="order_detail">
-        <ion-label class="small_lbl2">{{'SubTotal' | translate}}<span class="prize1">${{total}}</span></ion-label>
-        <ion-label class="small_lbl2">{{'Delivery Charge' | translate}}<span class="prize1">$5</span></ion-label>
-        <ion-label class="small_lbl2">{{'Service Tax' | translate}}<span class="prize1">${{serviceTax}}</span>
+        <ion-label class="small_lbl2">{{'SubTotal' | translate}}<span class="prize1">{{'currencyCode' | translate}} {{total}}</span></ion-label>
+        <ion-label class="small_lbl2">{{'Delivery Charge' | translate}}<span class="prize1">{{'currencyCode' | translate}} 5</span></ion-label>
         </ion-label>
-        <ion-label class="small_lbl2">{{'Total' | translate}}<span class="prize1">${{grandTotal}}</span></ion-label>
+        <ion-label class="small_lbl2">{{'Total' | translate}}<span class="prize1">{{'currencyCode' | translate}} {{grandTotal}}</span></ion-label>
       </div>
 
     </div>

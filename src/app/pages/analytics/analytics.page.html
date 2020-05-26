@@ -33,7 +33,7 @@
 
     <div class="total">
       <ion-label class="lbl">{{'Total Earnings' | translate}}</ion-label>
-      <ion-label class="amount">${{totalEarning}}</ion-label>
+      <ion-label class="amount">{{'currencyCode' | translate}} {{totalEarning}}</ion-label>
     </div>
   </div>
   <div *ngIf="!loaded" style="display: flex;flex-direction: column;justify-content: center;align-items: center;">
