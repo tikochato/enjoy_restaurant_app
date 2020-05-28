@@ -1,3 +1,15 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="close()">
+        <ion-icon slot="icon-only" color="dark" mode="md" name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>{{'Select Drivers' | translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
 <div class="inner-content">
   <div class="div_content">
     <p class="title">{{'Select Drivers' | translate}}</p>
@@ -30,7 +42,7 @@
       </ion-col>
       <ion-col size="6" class="cancel">
         <ion-button (click)="close()" color="light" expand="full">
-          {{'Cancle' | translate}}
+          {{'Cancel' | translate}}
         </ion-button>
       </ion-col>
     </ion-row>
@@ -38,3 +50,4 @@
 
   </div>
 </div>
+</ion-content>

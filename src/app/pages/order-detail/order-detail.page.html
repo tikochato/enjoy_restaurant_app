@@ -104,9 +104,12 @@
     <div class="card_div2">
 
       <div class="order_detail">
-        <ion-label class="small_lbl2">{{'SubTotal' | translate}}<span class="prize1">{{'currencyCode' | translate}} {{total}}</span></ion-label>
-        <ion-label class="small_lbl2">{{'Delivery Charge' | translate}}<span class="prize1">{{'currencyCode' | translate}} 5</span></ion-label>
-        <ion-label class="small_lbl2">{{'Total' | translate}}<span class="prize1">{{'currencyCode' | translate}} {{grandTotal}}</span></ion-label>
+        <ion-label class="small_lbl2">{{'SubTotal' | translate}}<span class="prize1">{{'currencyCode' | translate}}
+            {{total}}</span></ion-label>
+        <ion-label class="small_lbl2">{{'Delivery Charge' | translate}}<span
+            class="prize1">{{'currencyCode' | translate}} {{deliveryCharge}}</span></ion-label>
+        <ion-label class="small_lbl2">{{'Total' | translate}}<span class="prize1">{{'currencyCode' | translate}}
+            {{grandTotal}}</span></ion-label>
       </div>
 
     </div>
@@ -126,7 +129,8 @@
 
     <div class="status_div" *ngIf="status == 'accepted' || status == 'ongoing' ">
       <div style="width: 200px;">
-        <ion-select placeholder="Choose Status" [(ngModel)]="changeStatusOrder">
+        <ion-select placeholder="{{'Choose Status' | translate}}" [(ngModel)]="changeStatusOrder" 
+          cancelText="{{'Cancel' |  translate}}">
           <ion-select-option value="ongoing">{{'Ongoing' |  translate}}</ion-select-option>
           <ion-select-option value="cancel">{{'Cancel' | translate}}</ion-select-option>
           <ion-select-option value="delivered">{{'Delivered' | translate}}</ion-select-option>

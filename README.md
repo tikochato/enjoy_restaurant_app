@@ -50,3 +50,8 @@ adb logcat
 - [ ] Add Custom resturant with custom menu
 - [ ] Delete food
 - [ ] Food Status: Ready, all drivers should be notified
+- [ ] Locale 
+  - [ ] Date
+  - [x] Order status 
+  - [ ] Phone numbers
+  - [x] PDF
