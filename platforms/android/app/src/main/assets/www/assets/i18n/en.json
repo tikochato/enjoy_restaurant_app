@@ -152,5 +152,8 @@
     "Current Month": "Current Month",
     "Print": "Print",
     "New Notification": "New Notification",
-    "No Active Driver Found": "No Active Driver Found"
+    "No Active Driver Found": "No Active Driver Found",
+    "currencyCode": "$",
+    "Delivery Cost": "Delivery Cost",
+    "Delivery Disclaimer": "We will charge the accorded fee, if you want to absorve the part/total cost, you can modify this part"
 }
