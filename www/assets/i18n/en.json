@@ -155,5 +155,12 @@
     "No Active Driver Found": "No Active Driver Found",
     "currencyCode": "$",
     "Delivery Cost": "Delivery Cost",
-    "Delivery Disclaimer": "We will charge the accorded fee, if you want to absorve the part/total cost, you can modify this part"
+    "Delivery Disclaimer": "We will charge the accorded fee, if you want to absorve the part/total cost, you can modify this part",
+    "Italian": "Italian",
+    "Mexican": "Mexican",
+    "Chinese": "Chinese",
+    "Japanese": "Japonese",
+    "Local": "Local",
+    "American": "American",
+    "Other": "Other"
 }
