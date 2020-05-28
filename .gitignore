@@ -72,3 +72,6 @@ $RECYCLE.BIN/
 .DS_Store
 Thumbs.db
 UserInterfaceState.xcuserstate
+
+signing.md
+enjoy-release-key.keystore

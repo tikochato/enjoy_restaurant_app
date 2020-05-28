@@ -41,6 +41,8 @@ ionic cordova run android -l [--verbose]
 adb logcat
 ```
 
+<div?Icons made by <a href="https://www.flaticon.com/authors/nikita-golubev" title="Nikita Golubev">Nikita Golubev</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+
 ### Pending Task
 - [x] Remove Veg.
 - [x] Currency Translate ($/Q)

@@ -41,7 +41,7 @@
     "Closing Time": "Hora de cierre",
     "Estimated Delivery time": "Tiempo de entrega estimado",
     "Restaurant Description": "Descripción del restaurante",
-    "Select Cuisine": "Cocina selecta",
+    "Select Cuisine": "Tipo Comida",
     "Upload Your Restaurant Cover Image": "Sube tu imagen de portada de restaurante",
     "Upload your": "Sube tu",
     "cover image here": "imagen de portada aquí",
@@ -58,8 +58,8 @@
     "Variation": "Variación",
     "Veg": "Verduras",
     "Status": "Estado",
-    "Available": "Disponible",
-    "Hide": "Esconder",
+    "Available": "Activo",
+    "Hide": "Inactivo",
     "Upload foods cover image here": "Sube la imagen de portada de la comida aquí",
     "Food Name": "Nombre de comida",
     "Price": "Precio",
@@ -154,5 +154,12 @@
     "New Notification": "Nueva notificación",
     "No Active Driver Found": "No se encontró un controlador activo",
     "currencyCode": "Q",
-    "Delivery Disclaimer": "Nosotros te cobraremos el precio acordado, si quieres absorver una parte o la totalidad del costo de envio, puedes modificar aqui"
+    "Delivery Disclaimer": "Nosotros te cobraremos el precio acordado, si quieres absorver una parte o la totalidad del costo de envio, puedes modificar aqui",
+    "Italian": "Italiana",
+    "Mexican": "Mexicana",
+    "Chinese": "China",
+    "Japanese": "Japonesa",
+    "Local": "Típica",
+    "American": "Americana",
+    "Other": "Otro"
 }
