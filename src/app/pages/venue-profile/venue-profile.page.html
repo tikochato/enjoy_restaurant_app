@@ -48,11 +48,12 @@
       <ion-label>{{'Select Cuisine' | translate}}</ion-label>
       <!-- <p class="lbl">Select Cuisine</p> -->
       <ion-select [(ngModel)]="cusine" multiple="true">
-        <ion-select-option value="Italian">Italian</ion-select-option>
-        <ion-select-option value="Mexican">Mexican</ion-select-option>
-        <ion-select-option value="Chinese">Chinese</ion-select-option>
-        <ion-select-option value="Indian">Indian</ion-select-option>
-        <ion-select-option value="Japanese">Japanese</ion-select-option>
+        <ion-select-option value="Local">{{'Local' | translate}}</ion-select-option>
+        <ion-select-option value="Italian">{{'Italian' | translate}}</ion-select-option>
+        <ion-select-option value="Mexican">{{'Mexican' | translate}}</ion-select-option>
+        <ion-select-option value="Chinese">{{'Chinese' | translate}}</ion-select-option>
+        <ion-select-option value="Japanese">{{'Japanese' | translate}}</ion-select-option>
+        <ion-select-option value="Other">{{'Other' | translate}}</ion-select-option>
       </ion-select>
     </ion-item>
     <p class="lbl">{{'Upload Your Restaurant Cover Image' | translate}}</p>
