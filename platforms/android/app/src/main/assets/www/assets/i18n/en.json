@@ -105,7 +105,6 @@
     "Drivers": "Drivers",
     "Distance": "Distance",
     "Select": "Select",
-    "Cancle": "Cancle",
     "Order on the Way": "Order on the Way",
     "Items to deliver": "Items to deliver",
     "First Name": "First Name",
@@ -118,8 +117,10 @@
     "Please create your venue profile first": "Please create your venue profile first",
     "Something went wrong": "Something went wrong",
     "Orders": "Orders",
+    "Order ": "Order ",
     "Account": "Account",
     "Choose from": "Choose from",
+    "Choose Status": "Choose Status",
     "Gallery": "Gallery",
     "Camera": "Camera",
     "All Fields are required": "All Fields are required",
@@ -162,5 +163,11 @@
     "Japanese": "Japonese",
     "Local": "Local",
     "American": "American",
-    "Other": "Other"
+    "Other": "Other",
+    "Order Summary": "Order Summary",
+    "COD": "COD",
+    "accepted": "accepted",
+    "ongoing": "ongoing",
+    "cancel": "cancel",
+    "delivered": "delivered"
 }
