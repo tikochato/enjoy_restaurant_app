@@ -70,7 +70,7 @@ export class AddNewFoodsPage implements OnInit {
             this.ratting = info.ratting;
             this.id = info.id;
             this.veg = info.veg;
-            this.status = info.status ? info.status : true;
+            this.status = info.status ? info.status : false;
             this.variation = info.variation;
             if (info && info.variation) {
               this.smallPrice = info.small;
@@ -184,7 +184,9 @@ export class AddNewFoodsPage implements OnInit {
     }
     this.util.show();
     if (this.isEdit) {
-      console.log(this.cid);
+      const status = typeof this.status === 'boolean'
+        ? this.status
+        : this.status === 'true';
       const parma = {
         uid: localStorage.getItem('uid'),
         id: this.id,
@@ -194,7 +196,7 @@ export class AddNewFoodsPage implements OnInit {
         desc: this.descriptions,
         cover: this.coverImage,
         veg: this.veg,
-        status: this.status,
+        status: status,
         variation: this.variation
       };
       if (this.variation) {

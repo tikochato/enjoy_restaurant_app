@@ -8,8 +8,9 @@
   <div class="main_content_div">
     <div class="segment_div">
       <ion-label [class.active]="seg_id == 1" (click)="onClick(1)">{{'New Order' | translate}}</ion-label>
-      <ion-label [class.active]="seg_id == 2" (click)="onClick(2)">{{'Ongoing Order' | translate}}</ion-label>
-      <ion-label [class.active]="seg_id == 3" (click)="onClick(3)">{{'Past Order' | translate}}</ion-label>
+      <ion-label [class.active]="seg_id == 2" (click)="onClick(2)">{{'InProcess Order' | translate}}</ion-label>
+      <ion-label [class.active]="seg_id == 3" (click)="onClick(3)">{{'Ready Order' | translate}}</ion-label>
+      <ion-label [class.active]="seg_id == 4" (click)="onClick(4)">{{'Past Order' | translate}}</ion-label>
     </div>
 
     <div class="centent_div" *ngIf="seg_id == 1">
@@ -30,8 +31,8 @@
           </p>
         </ion-label>
       </ion-item>
-      <div class="card_div" *ngFor="let item of newOrders" (click)="goToOrderDetail(item.id)">
 
+      <div class="card_div" *ngFor="let item of newOrders" (click)="goToOrderDetail(item.id)">
         <div class="resto_detail">
           <div class="back_image" [style.backgroundImage]="'url('+getProfilePic(item.uid)+')'"></div>
           <div style="margin-left: 10px;">
@@ -39,11 +40,6 @@
             <ion-label class="res_location">{{item.time}}</ion-label>
             <ion-label class="res_location">{{item.id}}</ion-label>
           </div>
-
-          <!-- <div class="order_id">
-            <ion-label>{{'Order ID' | translate}}</ion-label>
-            <ion-label style="font-size:.8rem">{{item.id}}</ion-label>
-          </div> -->
         </div>
 
         <div class="line_div"></div>
@@ -59,12 +55,11 @@
           <ion-label class="head_gray">{{'TOTAL AMOUNT' | translate}}</ion-label>
           <ion-label class="small_lbl">{{'currencyCode' | translate}} {{item.grandTotal}}</ion-label>
         </div>
-
       </div>
     </div>
 
     <div class="centent_div" *ngIf="seg_id == 2">
-      <h2 class="ion-text-center" *ngIf="!dummy?.length && !onGoingOrders?.length">{{'No New Orders' | translate}}</h2>
+      <h2 class="ion-text-center" *ngIf="!dummy?.length && !inProcessOrders?.length">{{'No Orders' | translate}}</h2>
       <ion-item *ngFor="let item of dummy">
         <ion-thumbnail slot="start">
           <ion-skeleton-text animated></ion-skeleton-text>
@@ -81,8 +76,8 @@
           </p>
         </ion-label>
       </ion-item>
-      <div class="card_div" *ngFor="let item of onGoingOrders" (click)="goToOrderDetail(item.id)">
 
+      <div class="card_div" *ngFor="let item of inProcessOrders" (click)="goToOrderDetail(item.id)">
         <div class="resto_detail">
           <div class="back_image" [style.backgroundImage]="'url('+getProfilePic(item.uid)+')'"></div>
           <div style="margin-left: 10px;">
@@ -90,11 +85,6 @@
             <ion-label class="res_location">{{item.time}}</ion-label>
             <ion-label class="res_location">{{item.id}}</ion-label>
           </div>
-
-          <!-- <div class="order_id">
-            <ion-label>{{'Order ID' | translate}}</ion-label>
-            <ion-label style="font-size:.8rem">{{item.id}}</ion-label>
-          </div> -->
         </div>
 
         <div class="line_div"></div>
@@ -110,12 +100,11 @@
           <ion-label class="head_gray">{{'TOTAL AMOUNT' | translate}}</ion-label>
           <ion-label class="small_lbl">{{'currencyCode' | translate}} {{item.grandTotal}}</ion-label>
         </div>
-
       </div>
     </div>
 
     <div class="centent_div" *ngIf="seg_id == 3">
-      <h2 class="ion-text-center" *ngIf="!dummy?.length && !oldOrders?.length">{{'No New Orders' | translate}}</h2>
+      <h2 class="ion-text-center" *ngIf="!dummy?.length && !readyOrders?.length">{{'No Orders' | translate}}</h2>
       <ion-item *ngFor="let item of dummy">
         <ion-thumbnail slot="start">
           <ion-skeleton-text animated></ion-skeleton-text>
@@ -132,8 +121,8 @@
           </p>
         </ion-label>
       </ion-item>
-      <div class="card_div" *ngFor="let item of oldOrders" (click)="goToOrderDetail(item.id)">
 
+      <div class="card_div" *ngFor="let item of readyOrders" (click)="goToOrderDetail(item.id)">
         <div class="resto_detail">
           <div class="back_image" [style.backgroundImage]="'url('+getProfilePic(item.uid)+')'"></div>
           <div style="margin-left: 10px;">
@@ -141,11 +130,6 @@
             <ion-label class="res_location">{{item.time}}</ion-label>
             <ion-label class="res_location">{{item.id}}</ion-label>
           </div>
-
-          <!-- <div class="order_id">
-            <ion-label>{{'Order ID' | translate}}</ion-label>
-            <ion-label style="font-size:.8rem">{{item.id}}</ion-label>
-          </div> -->
         </div>
 
         <div class="line_div"></div>
@@ -161,12 +145,52 @@
           <ion-label class="head_gray">{{'TOTAL AMOUNT' | translate}}</ion-label>
           <ion-label class="small_lbl">{{'currencyCode' | translate}} {{item.grandTotal}}</ion-label>
         </div>
-
       </div>
     </div>
 
+    <div class="centent_div" *ngIf="seg_id == 4">
+      <h2 class="ion-text-center" *ngIf="!dummy?.length && !oldOrders?.length">{{'No Orders' | translate}}</h2>
+      <ion-item *ngFor="let item of dummy">
+        <ion-thumbnail slot="start">
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </ion-thumbnail>
+        <ion-label>
+          <h3>
+            <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+          </h3>
+          <p>
+            <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+          </p>
+          <p>
+            <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+          </p>
+        </ion-label>
+      </ion-item>
+      
+      <div class="card_div" *ngFor="let item of oldOrders" (click)="goToOrderDetail(item.id)">
+        <div class="resto_detail">
+          <div class="back_image" [style.backgroundImage]="'url('+getProfilePic(item.uid)+')'"></div>
+          <div style="margin-left: 10px;">
+            <ion-label class="res_name">{{item.uid.fullname}}</ion-label>
+            <ion-label class="res_location">{{item.time}}</ion-label>
+            <ion-label class="res_location">{{item.id}}</ion-label>
+          </div>
+        </div>
 
+        <div class="line_div"></div>
 
-
+        <div class="order_detail">
+          <ion-label class="head_gray">{{'ITEMS' | translate}}</ion-label>
+          <div class="small_lbl">
+            <ion-label *ngFor="let order of item.order">{{order.quantiy}} X {{order.name}} <span
+                class="prize">{{'currencyCode' | translate}} {{order.price}}</span></ion-label>
+          </div>
+          <ion-label class="head_gray">{{'ORDERED ON' | translate}}</ion-label>
+          <ion-label class="small_lbl">{{item.time}} </ion-label>
+          <ion-label class="head_gray">{{'TOTAL AMOUNT' | translate}}</ion-label>
+          <ion-label class="small_lbl">{{'currencyCode' | translate}} {{item.grandTotal}}</ion-label>
+        </div>
+      </div>
+    </div>
   </div>
 </ion-content>

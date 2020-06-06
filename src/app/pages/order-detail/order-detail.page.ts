@@ -6,13 +6,14 @@ import { NavController, ModalController } from '@ionic/angular';
 import Swal from 'sweetalert2';
 import { SelectDriversPage } from '../select-drivers/select-drivers.page';
 import { Printer, PrintOptions } from '@ionic-native/printer/ngx';
+
 @Component({
   selector: 'app-order-detail',
   templateUrl: './order-detail.page.html',
   styleUrls: ['./order-detail.page.scss'],
 })
-export class OrderDetailPage implements OnInit {
 
+export class OrderDetailPage implements OnInit {
   tab_id;
   id: any;
   grandTotal: any;
@@ -39,6 +40,7 @@ export class OrderDetailPage implements OnInit {
   paid: any;
   orderString: any[] = [];
   loaded: boolean;
+
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -63,6 +65,7 @@ export class OrderDetailPage implements OnInit {
     this.util.publishNewAddress('hello');
     this.navCtrl.back();
   }
+
   async presentModal() {
     const modal = await this.modalController.create({
       component: SelectDriversPage,
@@ -115,7 +118,7 @@ export class OrderDetailPage implements OnInit {
       }
       console.log('data', data);
       const msg = this.util.translate('Your Order is ') + this.util.translate(value) + this.util.translate(' By ') + this.restName;
-      const titleNotification = this.util.translate('Order ') + this.util.translate(value); 
+      const titleNotification = this.util.translate('Order ') + this.util.translate(value);
       this.api.sendNotification(msg, titleNotification, this.token).subscribe((data) => {
         console.log(data);
         this.util.hide();
@@ -189,7 +192,6 @@ export class OrderDetailPage implements OnInit {
   }
 
   getOrder() {
-
     this.api.getOrderById(this.id).then((data) => {
       this.loaded = true;
       console.log(data);
@@ -217,7 +219,7 @@ export class OrderDetailPage implements OnInit {
         console.log('this', this.orders);
         this.getDrivers();
         this.orders.forEach(element => {
-          this.orderString.push('<p style="border-bottom: 1px dashed black;"><span style="float: left;">' + element.name + ' X ' + element.quantiy + ' </span> <span style="float: right;">'+ this.util.translate('currencyCode')  + element.price + '</span> </p>')
+          this.orderString.push('<p style="border-bottom: 1px dashed black;"><span style="float: left;">' + element.name + ' X ' + element.quantiy + ' </span> <span style="float: right;">' + this.util.translate('currencyCode') + element.price + '</span> </p>')
         });
         console.log('orderstring', this.orderString);
       }
@@ -231,6 +233,7 @@ export class OrderDetailPage implements OnInit {
       console.log('error in order', error);
     });
   }
+
   goToTracker() {
     const navData: NavigationExtras = {
       queryParams: {
@@ -241,47 +244,43 @@ export class OrderDetailPage implements OnInit {
   }
 
   changeStatus(value) {
-    if (value === 'accepted') {
-      console.log('accepted', this.drivers);
-      this.presentModal();
-    } else {
-      this.util.show(this.util.translate('Please wait'));
-      this.api.updateOrderStatus(this.id, value).then((data) => {
+    this.util.show(this.util.translate('Please wait'));
+    this.api.updateOrderStatus(this.id, value).then((data) => {
 
-        console.log('data', data);
-        const msg = this.util.translate('Your Order is ') + value + this.util.translate(' By ') + this.restName;
-        this.api.sendNotification(msg, 'Order ' + value, this.token).subscribe((data) => {
-          console.log(data);
-          this.util.hide();
-          this.navCtrl.back();
-        }, error => {
-          this.util.hide();
-          console.log('err', error);
-        });
-        this.util.publishNewAddress('hello');
-        Swal.fire({
-          title: this.util.translate('success'),
-          text: this.util.translate('Order status changed to ') + value,
-          icon: 'success',
-          timer: 2000,
-          backdrop: false,
-          background: 'white'
-        });
-        this.navCtrl.back();
-      }).catch(error => {
-        console.log(error);
+      console.log('data', data);
+      const msg = this.util.translate('Your Order is ') + this.util.translate(value) + this.util.translate(' By ') + this.restName;
+      this.api.sendNotification(msg, 'Order ' + this.util.translate(value), this.token).subscribe((data) => {
+        console.log(data);
         this.util.hide();
-        this.util.errorToast(this.util.translate('Something went wrong'));
+        this.navCtrl.back();
+      }, error => {
+        this.util.hide();
+        console.log('err', error);
       });
-    }
-
+      this.util.publishNewAddress('hello');
+      Swal.fire({
+        title: this.util.translate('success'),
+        text: this.util.translate('Order status changed to ') + this.util.translate(value),
+        icon: 'success',
+        timer: 2000,
+        backdrop: false,
+        background: 'white'
+      });
+      this.navCtrl.back();
+    }).catch(error => {
+      console.log(error);
+      this.util.hide();
+      this.util.errorToast(this.util.translate('Something went wrong'));
+    });
   }
+
   changeOrderStatus() {
     console.log('order status', this.changeStatusOrder);
     if (this.changeStatusOrder) {
       this.changeStatus(this.changeStatusOrder);
     }
   }
+
   call() {
     if (this.phone) {
       window.open('tel:' + this.phone);
@@ -289,6 +288,7 @@ export class OrderDetailPage implements OnInit {
       this.util.errorToast(this.util.translate('Number not found'));
     }
   }
+  
   email() {
     if (this.userEmail) {
       window.open('mailto:' + this.userEmail);
@@ -305,7 +305,7 @@ export class OrderDetailPage implements OnInit {
       duplex: false,
     };
     const order = this.orderString.join('');
-    const content = '<div style="padding: 20px;display: flex;flex-direction: column;"> <img src="assets/icon.png" style="text-align: center; height: 100px;width: 100px;" alt=""> <h2 style="text-align: center;">' + title + '</h2> <p style="float: left;"><b>' + this.id + '</b></p> <p style="float: left;"><b>' + this.restName + '</b></p> <p style="float: left;"><b>' + userName + '</b></p> <p style="float: left;">' + this.time + ' </p> <p style="font-weight: bold;">' + this.util.translate('ITEMS') + '</p> ' + order + ' <p style="border-bottom: 1px solid black;"><span style="float: left;font-weight: bold;">' + this.util.translate('SubTotal') + '</span> <span style="float: right;font-weight: bold;">' + this.util.translate('currencyCode') + this.total + '</span> <p style="border-bottom: 1px solid black;"><span style="float: left;font-weight: bold;">' + this.util.translate('Delivery Charge') + '</span> <span style="float: right;font-weight: bold;">'+ this.util.translate('currencyCode') + this.deliveryCharge+'</span> </p> <p style="border-bottom: 1px solid black;"><span style="float: left;font-weight: bold;">' + this.util.translate('Total') + '</span> <span style="float: right;font-weight: bold;">'+ this.util.translate('currencyCode')  + this.grandTotal + '</span> </p> <h1 style="text-align: center;">' + this.util.translate(this.paid.toUpperCase()) + '</h1> </div>';
+    const content = '<div style="padding: 20px;display: flex;flex-direction: column;"> <img src="assets/icon.png" style="text-align: center; height: 100px;width: 100px;" alt=""> <h2 style="text-align: center;">' + title + '</h2> <p style="float: left;"><b>' + this.id + '</b></p> <p style="float: left;"><b>' + this.restName + '</b></p> <p style="float: left;"><b>' + userName + '</b></p> <p style="float: left;">' + this.time + ' </p> <p style="font-weight: bold;">' + this.util.translate('ITEMS') + '</p> ' + order + ' <p style="border-bottom: 1px solid black;"><span style="float: left;font-weight: bold;">' + this.util.translate('SubTotal') + '</span> <span style="float: right;font-weight: bold;">' + this.util.translate('currencyCode') + this.total + '</span> <p style="border-bottom: 1px solid black;"><span style="float: left;font-weight: bold;">' + this.util.translate('Delivery Charge') + '</span> <span style="float: right;font-weight: bold;">' + this.util.translate('currencyCode') + this.deliveryCharge + '</span> </p> <p style="border-bottom: 1px solid black;"><span style="float: left;font-weight: bold;">' + this.util.translate('Total') + '</span> <span style="float: right;font-weight: bold;">' + this.util.translate('currencyCode') + this.grandTotal + '</span> </p> <h1 style="text-align: center;">' + this.util.translate(this.paid.toUpperCase()) + '</h1> </div>';
     this.printer.print(content, options).then((data) => {
       console.log(data);
     }).catch(error => {

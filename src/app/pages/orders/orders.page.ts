@@ -15,7 +15,8 @@ export class OrdersPage implements OnInit {
   seg_id = 1;
 
   newOrders: any[] = [];
-  onGoingOrders: any[] = [];
+  inProcessOrders: any[] = [];
+  readyOrders: any[] = [];
   oldOrders: any[] = [];
   dummy = Array(50);
   constructor(
@@ -44,7 +45,8 @@ export class OrdersPage implements OnInit {
   ionViewWillEnter() {
     console.log('enter');
     this.newOrders = [];
-    this.onGoingOrders = [];
+    this.inProcessOrders = [];
+    this.readyOrders = [];
     this.oldOrders = [];
     this.dummy = Array(50);
     this.api.getVenueDetails(localStorage.getItem('uid')).then(data => {
@@ -106,15 +108,18 @@ export class OrdersPage implements OnInit {
       console.log('orders', data);
       if (data && data.length > 0) {
         this.newOrders = [];
-        this.onGoingOrders = [];
+        this.inProcessOrders = [];
+        this.readyOrders = [];
         this.oldOrders = [];
         data.forEach(element => {
           element.order = JSON.parse(element.order);
           if (element.status === 'created') {
             this.newOrders.push(element);
-          } else if (element.status === 'accepted' || element.status === 'ongoing') {
-            this.onGoingOrders.push(element);
-          } else if (element.status === 'delivered' || element.status === 'cancel' || element.status === 'rejected') {
+          } else if (element.status === 'accepted') {
+            this.inProcessOrders.push(element);
+          } else if (element.status === 'ready') {
+            this.readyOrders.push(element);
+          } else if (element.status === 'ongoing' || element.status === 'delivered' || element.status === 'cancel' || element.status === 'rejected') {
             this.oldOrders.push(element);
           }
         });

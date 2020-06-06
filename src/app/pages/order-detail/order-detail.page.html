@@ -127,13 +127,27 @@
       </ion-button>
     </div>
 
-    <div class="status_div" *ngIf="status == 'accepted' || status == 'ongoing' ">
+    <div class="status_div" *ngIf="status == 'accepted'">
       <div style="width: 200px;">
-        <ion-select placeholder="{{'Choose Status' | translate}}" [(ngModel)]="changeStatusOrder" 
+        <ion-select placeholder="{{'Choose Status' | translate}}" [(ngModel)]="changeStatusOrder"
           cancelText="{{'Cancel' |  translate}}">
-          <ion-select-option value="ongoing">{{'Ongoing' |  translate}}</ion-select-option>
-          <ion-select-option value="cancel">{{'Cancel' | translate}}</ion-select-option>
-          <ion-select-option value="delivered">{{'Delivered' | translate}}</ion-select-option>
+          <ion-select-option value="ready">{{'Ready' |  translate}}</ion-select-option>
+          <ion-select-option value="rejected">{{'Reject Order' | translate}}</ion-select-option>
+        </ion-select>
+      </div>
+
+      <div>
+        <ion-button (click)="changeOrderStatus()" size="small">
+          {{'Update Status' | translate}}
+        </ion-button>
+      </div>
+    </div>
+
+    <div class="status_div" *ngIf="status == 'ready'">
+      <div style="width: 200px;">
+        <ion-select placeholder="{{'Choose Status' | translate}}" [(ngModel)]="changeStatusOrder"
+          cancelText="{{'Cancel' |  translate}}">          
+          <ion-select-option value="rejected">{{'Reject Order' | translate}}</ion-select-option>
         </ion-select>
       </div>
 
