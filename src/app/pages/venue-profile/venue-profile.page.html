@@ -66,6 +66,16 @@
       </ion-item>
 
       <ion-item class="inputText">
+        <ion-label position="floating">{{'Minimum Purchase' | translate}} {{'currencyCode' | translate}}</ion-label>
+        <ion-input class="inputText" [(ngModel)]="minimumPurchase" type="number"></ion-input>
+      </ion-item>
+
+      <ion-item class="inputText">
+        <ion-label position="floating">{{'Minimum Purchase Charge' | translate}} {{'currencyCode' | translate}}</ion-label>
+        <ion-input class="inputText" [(ngModel)]="minimumPurchaseCharge" type="number"></ion-input>
+      </ion-item>
+
+      <ion-item class="inputText">
         <ion-label position="floating">{{'Estimated Delivery time' | translate}} (min.)</ion-label>
         <ion-datetime [(ngModel)]="time" display-format="mm"></ion-datetime>
       </ion-item>

@@ -38,6 +38,8 @@ export class VenueProfilePage implements OnInit {
   descritions: any = '';
   haveData: boolean = false;
   deliveryCharge: any = '';
+  minimumPurchase: any = '';
+  minimumPurchaseCharge: any = '';
   time: any = '';
   latitude: any;
   longitude: any;
@@ -76,6 +78,8 @@ export class VenueProfilePage implements OnInit {
       lng: this.longitude,
       cover: this.coverImage,
       deliveryCharge: this.deliveryCharge,
+      minimumPurchase: this.minimumPurchase,
+      minimumPurchaseCharge: this.minimumPurchaseCharge,
       time: this.time,
       ratting: 0,
       cusine: this.cusine,
@@ -129,6 +133,8 @@ export class VenueProfilePage implements OnInit {
       lng: this.longitude,
       cover: this.coverImage,
       deliveryCharge: this.deliveryCharge,
+      minimumPurchase: this.minimumPurchase,
+      minimumPurchaseCharge: this.minimumPurchaseCharge,
       time: this.time,
       cusine: this.cusine,
       openTime: this.openTime,
@@ -266,6 +272,8 @@ export class VenueProfilePage implements OnInit {
         this.longitude = data.lng;
         this.time = data.time;
         this.deliveryCharge = data.deliveryCharge;
+        this.minimumPurchase = data.minimumPurchase || 0;
+        this.minimumPurchaseCharge = data.minimumPurchaseCharge || 0;
         this.cusine = data.cusine;
         this.openTime = data.openTime;
         this.closeTime = data.closeTime;
