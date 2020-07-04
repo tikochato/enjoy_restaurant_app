@@ -175,5 +175,7 @@
     "delivered": "entregado",
     "created": "creado",
     "ready": "listo",
-    "rejected": "rechazado"
+    "rejected": "rechazado",
+    "Minimum Purchase": "Compra Mínima",
+    "Minimum Purchase Charge": "Recargo por Compra Mínima"
 }

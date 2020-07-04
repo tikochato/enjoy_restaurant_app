@@ -176,5 +176,7 @@
     "delivered": "delivered",
     "created": "created",
     "ready": "ready",
-    "rejected": "rejected"
+    "rejected": "rejected",
+    "Minimum Purchase": "Minimum Purchase",
+    "Minimum Purchase Charge": "Minimum Purchase Charge"
 }
