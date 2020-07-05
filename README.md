@@ -49,6 +49,15 @@ adb logcat
 - [x] Add Delivery Charge to each restaurant
 - [ ] Add Custom resturant with custom menu
 - [ ] Delete food
+- [ ] Orders Status / Orders Status Detaills
+  - [ ] created
+  - [ ] accepted
+  - [ ] ready
+  - [ ] ongoing
+  - [ ] picked
+  - [ ] delivered
+  - [ ] rejected
+  - [ ] cancel
 - [ ] Order Status
   - [x] Add Ready Tab
   - [ ] When order ready, notify all drivers

@@ -119,46 +119,28 @@
 <ion-footer>
   <ion-toolbar>
     <div class="btn_div" *ngIf="status == 'created'">
-      <ion-button (click)="changeStatus('rejected')" size="small" class="reject">
+      <ion-button (click)="changeStatus('rejected')" expand="block" color="danger" class="reject">
         {{'Reject Order' | translate}}
       </ion-button>
-      <ion-button (click)="changeStatus('accepted')" size="small" class="accept">
+      <ion-button (click)="changeStatus('accepted')" expand="block" color="success" class="accept">
         {{'Accept Order' | translate}}
       </ion-button>
     </div>
 
-    <div class="status_div" *ngIf="status == 'accepted'">
-      <div style="width: 200px;">
-        <ion-select placeholder="{{'Choose Status' | translate}}" [(ngModel)]="changeStatusOrder"
-          cancelText="{{'Cancel' |  translate}}">
-          <ion-select-option value="ready">{{'Ready' |  translate}}</ion-select-option>
-          <ion-select-option value="rejected">{{'Reject Order' | translate}}</ion-select-option>
-        </ion-select>
-      </div>
-
-      <div>
-        <ion-button (click)="changeOrderStatus()" size="small">
-          {{'Update Status' | translate}}
-        </ion-button>
-      </div>
+    <div class="btn_div" *ngIf="status == 'accepted'">
+      <ion-button (click)="changeStatus('rejected')" expand="block" color="danger" class="reject">
+        {{'Reject Order' | translate}}
+      </ion-button>
+      <ion-button (click)="changeStatus('ready')" expand="block" color="success" class="accept">
+        {{'Ready' | translate}}
+      </ion-button>
     </div>
 
-    <div class="status_div" *ngIf="status == 'ready'">
-      <div style="width: 200px;">
-        <ion-select placeholder="{{'Choose Status' | translate}}" [(ngModel)]="changeStatusOrder"
-          cancelText="{{'Cancel' |  translate}}">          
-          <ion-select-option value="rejected">{{'Reject Order' | translate}}</ion-select-option>
-        </ion-select>
-      </div>
-
-      <div>
-        <ion-button (click)="changeOrderStatus()" size="small">
-          {{'Update Status' | translate}}
-        </ion-button>
-      </div>
+    <div class="btn_div" *ngIf="status == 'ready' || status == 'ongoing'">
     </div>
 
-    <ion-label class="green" *ngIf="status == 'delivered'">{{'Order Status' | translate}} :
+    <ion-label class="green" *ngIf="status == 'delivered'">
+      {{'Order Status' | translate}} :
       {{'Order Delivered' | translate}}</ion-label>
     <ion-label class="red" *ngIf="status == 'cancel'">{{'Order Cancelled by user' | translate}}</ion-label>
   </ion-toolbar>

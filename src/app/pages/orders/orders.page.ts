@@ -39,9 +39,11 @@ export class OrdersPage implements OnInit {
   ngOnInit() {
     console.log('init');
   }
+
   ngAfterViewInit() {
     console.log('ngAfterViewInit');
   }
+
   ionViewWillEnter() {
     console.log('enter');
     this.newOrders = [];
@@ -89,9 +91,7 @@ export class OrdersPage implements OnInit {
   }
 
   goToOrderDetail(ids) {
-
     console.log(ids);
-
     const navData: NavigationExtras = {
       queryParams: {
         id: ids
@@ -103,7 +103,7 @@ export class OrdersPage implements OnInit {
   getOrders() {
     console.log('vid', localStorage.getItem('uid'));
     this.dummy = Array(50);
-    this.api.getMyOrders(localStorage.getItem('uid')).then((data) => {
+    return this.api.getMyOrders(localStorage.getItem('uid')).then((data) => {
       this.dummy = [];
       console.log('orders', data);
       if (data && data.length > 0) {
@@ -135,7 +135,14 @@ export class OrdersPage implements OnInit {
       this.util.errorToast(this.util.translate('Something went wrong'));
     });
   }
+
   getProfilePic(item) {
     return item && item.cover ? item.cover : 'assets/imgs/user.jpg';
+  }
+
+  doRefresh(event) {
+    this.getOrders().then(() => {
+      event.target.complete();
+    });
   }
 }

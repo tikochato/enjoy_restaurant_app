@@ -6,6 +6,10 @@
 
 <ion-content>
   <div class="main_content_div">
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+      <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+
     <div class="segment_div">
       <ion-label [class.active]="seg_id == 1" (click)="onClick(1)">{{'New Order' | translate}}</ion-label>
       <ion-label [class.active]="seg_id == 2" (click)="onClick(2)">{{'InProcess Order' | translate}}</ion-label>
@@ -166,7 +170,7 @@
           </p>
         </ion-label>
       </ion-item>
-      
+
       <div class="card_div" *ngFor="let item of oldOrders" (click)="goToOrderDetail(item.id)">
         <div class="resto_detail">
           <div class="back_image" [style.backgroundImage]="'url('+getProfilePic(item.uid)+')'"></div>
