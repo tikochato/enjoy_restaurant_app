@@ -117,9 +117,9 @@ export class OrdersPage implements OnInit {
             this.newOrders.push(element);
           } else if (element.status === 'accepted') {
             this.inProcessOrders.push(element);
-          } else if (element.status === 'ready') {
+          } else if (element.status === 'ready' || element.status === 'ongoing') {
             this.readyOrders.push(element);
-          } else if (element.status === 'ongoing' || element.status === 'delivered' || element.status === 'cancel' || element.status === 'rejected') {
+          } else if (element.status === 'picked' || element.status === 'delivered' || element.status === 'cancel' || element.status === 'rejected') {
             this.oldOrders.push(element);
           }
         });

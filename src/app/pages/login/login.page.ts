@@ -98,6 +98,7 @@ export class LoginPage implements OnInit {
   resetPass() {
     this.router.navigate(['reset']);
   }
+  
   register() {
     this.router.navigate(['register']);
   }
@@ -105,6 +106,7 @@ export class LoginPage implements OnInit {
   getClassName() {
     return localStorage.getItem('language');
   }
+
   changeLng(lng) {
     localStorage.setItem('language', lng);
     this.translate.use(lng);

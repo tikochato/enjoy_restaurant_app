@@ -21,6 +21,7 @@ libpeerconnection.log/
 npm-debug.log
 testem.log
 typings/
+platforms/android/app/src/main/res/xml/config.xml
 
 # e2e
 e2e/*.js
