@@ -1,6 +1,7 @@
 # v1.0.0
 - Fix Order Status Tabs
 - Refresh orders
+- Order orders by timestamp
 
 # v0.2.0
 - Add `ready` state to orders

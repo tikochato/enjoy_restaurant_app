@@ -86,8 +86,12 @@ export class AppComponent {
         this.nativeAudio.setVolumeForComplexAsset('audio', 1);
         this.presentActionSheet();
       });
-      this.oneSignal.inFocusDisplaying(2);
+      this.oneSignal.handleNotificationOpened().subscribe(data => {
+        this.nativeAudio.stop('audio').then(() => console.log('done'), () => console.log('error'));
+      });
+      this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.InAppAlert);
       this.platform.backButton.subscribe(async () => {
+        this.nativeAudio.stop('audio').then(() => console.log('done'), () => console.log('error'));
         console.log('asd', this.router.url, 'ad', this.router.isActive('/tabs/', true));
         if (this.router.url.includes('/tabs/') || this.router.url.includes('/login')) {
           navigator['app'].exitApp();

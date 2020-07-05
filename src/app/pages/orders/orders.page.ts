@@ -107,6 +107,7 @@ export class OrdersPage implements OnInit {
       this.dummy = [];
       console.log('orders', data);
       if (data && data.length > 0) {
+        data.sort((a, b) => new Date(a.time).getTime() - new Date(b.time).getTime());
         this.newOrders = [];
         this.inProcessOrders = [];
         this.readyOrders = [];
