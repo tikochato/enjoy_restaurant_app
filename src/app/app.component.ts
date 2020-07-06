@@ -75,21 +75,32 @@ export class AppComponent {
       }, 1000);
       this.nativeAudio.preloadSimple('audio', 'assets/alert.mp3').then((data: any) => {
         console.log('dupletx', data);
+        this.nativeAudio.stop('audio').then(() => console.log('done'), () => console.log('error'));
       }, error => {
         console.log(error);
       }).catch(error => {
         console.log(error);
       });
+
       this.oneSignal.handleNotificationReceived().subscribe(data => {
         console.log('got order', data);
-        this.nativeAudio.play('audio', () => console.log('audio is done playing')).catch(error => console.log(error));
+        this.nativeAudio.play('audio', () => {
+          console.log('audio is done playing');
+          setTimeout(() => {
+            this.nativeAudio.stop('audio').then(() => console.log('done'), () => console.log('error'));
+          },
+            3000);
+        }).catch(error => console.log(error));
         this.nativeAudio.setVolumeForComplexAsset('audio', 1);
         this.presentActionSheet();
       });
+
       this.oneSignal.handleNotificationOpened().subscribe(data => {
         this.nativeAudio.stop('audio').then(() => console.log('done'), () => console.log('error'));
       });
+
       this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.InAppAlert);
+
       this.platform.backButton.subscribe(async () => {
         this.nativeAudio.stop('audio').then(() => console.log('done'), () => console.log('error'));
         console.log('asd', this.router.url, 'ad', this.router.isActive('/tabs/', true));

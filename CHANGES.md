@@ -2,6 +2,7 @@
 - Fix Order Status Tabs
 - Refresh orders
 - Order orders by timestamp
+- Driver's notification when order is ready
 
 # v0.2.0
 - Add `ready` state to orders

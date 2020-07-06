@@ -288,6 +288,22 @@ export class ApisService {
     return this.http.post('https://onesignal.com/api/v1/notifications', body, header);
   }
 
+  sendSegmentNotification(msg, title, segment) {
+    const body = {
+      app_id: environment.onesignal.appId,
+      included_segments: [segment],
+      headings: { en: title },
+      contents: { en: msg },
+      data: { task: msg }
+    };
+    const header = {
+      headers: new HttpHeaders()
+        .set('Content-Type', 'application/json; charset=utf-8')
+        .set('Authorization', `Basic ${environment.onesignal.restKey}`)
+    };
+    return this.http.post('https://onesignal.com/api/v1/notifications', body, header);
+  }
+
   public getMyOrders(id): Promise<any> {
     return new Promise<any>((resolve, reject) => {
       this.adb.collection('orders', ref => ref.where('restId', '==', id)).get().subscribe((venue) => {

@@ -158,33 +158,38 @@ export class OrderDetailPage implements OnInit {
   }
 
   getDrivers() {
-    this.api.getDrivers().then((data) => {
+    return this.api.getDrivers().then((data) => {
       console.log('drivers', data);
       this.dummyDriver = [];
       this.drivers = [];
       if (data && data.length > 0) {
-        data.forEach(async (element) => {
-          const distance = await this.distanceInKmBetweenEarthCoordinates(
-            this.userLat,
-            this.userLng,
-            parseFloat(element.lat),
-            parseFloat(element.lng));
-          console.log(distance);
-          if (element.current === 'active' && element.status === 'active') {
-            element.distance = distance ? distance : 10;
-            this.dummyDriver.push(element);
-          }
-        });
-        data.forEach(async (element) => {
-          const distance = await this.distanceInKmBetweenEarthCoordinates(
-            this.userLat,
-            this.userLng,
-            parseFloat(element.lat),
-            parseFloat(element.lng));
-          if (distance < 10 && element.current === 'active' && element.status === 'active') {
-            this.drivers.push(element);
-          }
-        });
+        this.drivers = [...data];
+        console.log(this.drivers);
+        console.log(JSON.stringify(this.drivers));
+        return this.drivers;
+
+        // data.forEach(async (element) => {
+        //   const distance = await this.distanceInKmBetweenEarthCoordinates(
+        //     this.userLat,
+        //     this.userLng,
+        //     parseFloat(element.lat),
+        //     parseFloat(element.lng));
+        //   console.log(distance);
+        //   if (element.current === 'active' && element.status === 'active') {
+        //     element.distance = distance ? distance : 10;
+        //     this.dummyDriver.push(element);
+        //   }
+        // });
+        // data.forEach(async (element) => {
+        //   const distance = await this.distanceInKmBetweenEarthCoordinates(
+        //     this.userLat,
+        //     this.userLng,
+        //     parseFloat(element.lat),
+        //     parseFloat(element.lng));
+        //   if (distance < 10 && element.current === 'active' && element.status === 'active') {
+        //     this.drivers.push(element);
+        //   }
+        // });
       }
     }).catch(error => {
       console.log(error);
@@ -245,18 +250,23 @@ export class OrderDetailPage implements OnInit {
 
   changeStatus(value) {
     this.util.show(this.util.translate('Please wait'));
+    console.log('changeStatus value: ', value);
     this.api.updateOrderStatus(this.id, value).then((data) => {
-
-      console.log('data', data);
-      const msg = this.util.translate('Your Order is ') + this.util.translate(value) + this.util.translate(' By ') + this.restName;
-      this.api.sendNotification(msg, 'Order ' + this.util.translate(value), this.token).subscribe((data) => {
-        console.log(data);
+      if (value === 'ready') {
+        this.api.sendSegmentNotification(
+          this.util.translate('New Order Ready'),
+          this.util.translate('New Order Ready Text'),
+          'Drivers'
+        ).subscribe((data) => {
+          console.log(data);
+          this.util.hide();
+        }, error => {
+          this.util.hide();
+          console.log('err', error);
+        });
+      } else {
         this.util.hide();
-        this.navCtrl.back();
-      }, error => {
-        this.util.hide();
-        console.log('err', error);
-      });
+      }
       this.util.publishNewAddress('hello');
       Swal.fire({
         title: this.util.translate('success'),
@@ -274,13 +284,6 @@ export class OrderDetailPage implements OnInit {
     });
   }
 
-  changeOrderStatus() {
-    console.log('order status', this.changeStatusOrder);
-    if (this.changeStatusOrder) {
-      this.changeStatus(this.changeStatusOrder);
-    }
-  }
-
   call() {
     if (this.phone) {
       window.open('tel:' + this.phone);
@@ -288,7 +291,7 @@ export class OrderDetailPage implements OnInit {
       this.util.errorToast(this.util.translate('Number not found'));
     }
   }
-  
+
   email() {
     if (this.userEmail) {
       window.open('mailto:' + this.userEmail);
