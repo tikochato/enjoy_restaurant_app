@@ -3,6 +3,7 @@ import { ApisService } from 'src/app/services/apis.service';
 import { UtilService } from 'src/app/services/util.service';
 import { Router, NavigationExtras } from '@angular/router';
 import { AngularFirestore } from 'angularfire2/firestore';
+import { OneSignal } from '@ionic-native/onesignal/ngx';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -23,6 +24,7 @@ export class OrdersPage implements OnInit {
     private api: ApisService,
     private util: UtilService,
     private router: Router,
+    private oneSignal: OneSignal,
     private adb: AngularFirestore
   ) {
     if (localStorage.getItem('uid')) {
@@ -46,6 +48,7 @@ export class OrdersPage implements OnInit {
 
   ionViewWillEnter() {
     console.log('enter');
+    this.oneSignal.clearOneSignalNotifications();
     this.newOrders = [];
     this.inProcessOrders = [];
     this.readyOrders = [];

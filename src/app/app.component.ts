@@ -69,6 +69,7 @@ export class AppComponent {
           console.log('iddddd', data);
           localStorage.setItem('fcm', data.userId);
         });
+        this.oneSignal.clearOneSignalNotifications();
         this.oneSignal.enableSound(true);
         await this.oneSignal.endInit();
 
@@ -88,8 +89,7 @@ export class AppComponent {
           console.log('audio is done playing');
           setTimeout(() => {
             this.nativeAudio.stop('audio').then(() => console.log('done'), () => console.log('error'));
-          },
-            3000);
+          }, 3000);
         }).catch(error => console.log(error));
         this.nativeAudio.setVolumeForComplexAsset('audio', 1);
         this.presentActionSheet();

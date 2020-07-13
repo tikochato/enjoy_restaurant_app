@@ -47,7 +47,6 @@ adb logcat
 - [x] Remove Veg.
 - [x] Currency Translate ($/Q)
 - [x] Add Delivery Charge to each restaurant
-- [ ] Add Custom resturant with custom menu
 - [ ] Delete food
 - [ ] Orders Status / Orders Status Detaills
   - [ ] created
@@ -60,7 +59,7 @@ adb logcat
   - [ ] cancel
 - [ ] Order Status
   - [x] Add Ready Tab
-  - [ ] When order ready, notify all drivers
+  - [x] When order ready, notify all drivers
 - [ ] Locale 
   - [ ] Date
   - [x] Order status 
