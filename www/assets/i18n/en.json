@@ -178,5 +178,7 @@
     "ready": "ready",
     "rejected": "rejected",
     "Minimum Purchase": "Minimum Purchase",
-    "Minimum Purchase Charge": "Minimum Purchase Charge"
+    "Minimum Purchase Charge": "Minimum Purchase Charge",
+    "New Order Ready": "New Order is Ready",
+    "New Order Ready Text": "A new order is ready to be picked"
 }
