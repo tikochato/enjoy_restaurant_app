@@ -180,5 +180,6 @@
     "Minimum Purchase": "Minimum Purchase",
     "Minimum Purchase Charge": "Minimum Purchase Charge",
     "New Order Ready": "New Order is Ready",
-    "New Order Ready Text": "A new order is ready to be picked"
+    "New Order Ready Text": "A new order is ready to be picked",
+    "Under Minimum Charges": "Charges for under minimum"
 }

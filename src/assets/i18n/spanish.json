@@ -179,5 +179,6 @@
     "Minimum Purchase": "Compra Mínima",
     "Minimum Purchase Charge": "Recargo por Compra Mínima",
     "New Order Ready": "Nuevo Pedido Listo",
-    "New Order Ready Text": "Un  nuevo pedido esta listo para ser recogido"
+    "New Order Ready Text": "Un  nuevo pedido esta listo para ser recogido",
+    "Under Minimum Charges": "Cargos por compra menor al mínimo"
 }

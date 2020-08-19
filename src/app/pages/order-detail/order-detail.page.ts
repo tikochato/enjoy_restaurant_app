@@ -20,6 +20,7 @@ export class OrderDetailPage implements OnInit {
   orders: any[] = [];
   serviceTax: any;
   deliveryCharge: any;
+  minimumPurchaseCharge: any = 0;
   status: any;
   time: any;
   total: any;
@@ -205,6 +206,7 @@ export class OrderDetailPage implements OnInit {
         this.orders = JSON.parse(data.order);
         this.serviceTax = data.serviceTax;
         this.deliveryCharge = data.deliveryCharge;
+        this.minimumPurchaseCharge = data.minimumPurchaseCharge;
         this.status = data.status;
         this.time = data.time;
         this.total = data.total;
@@ -308,7 +310,11 @@ export class OrderDetailPage implements OnInit {
       duplex: false,
     };
     const order = this.orderString.join('');
-    const content = '<div style="padding: 20px;display: flex;flex-direction: column;"> <img src="assets/icon.png" style="text-align: center; height: 100px;width: 100px;" alt=""> <h2 style="text-align: center;">' + title + '</h2> <p style="float: left;"><b>' + this.id + '</b></p> <p style="float: left;"><b>' + this.restName + '</b></p> <p style="float: left;"><b>' + userName + '</b></p> <p style="float: left;">' + this.time + ' </p> <p style="font-weight: bold;">' + this.util.translate('ITEMS') + '</p> ' + order + ' <p style="border-bottom: 1px solid black;"><span style="float: left;font-weight: bold;">' + this.util.translate('SubTotal') + '</span> <span style="float: right;font-weight: bold;">' + this.util.translate('currencyCode') + this.total + '</span> <p style="border-bottom: 1px solid black;"><span style="float: left;font-weight: bold;">' + this.util.translate('Delivery Charge') + '</span> <span style="float: right;font-weight: bold;">' + this.util.translate('currencyCode') + this.deliveryCharge + '</span> </p> <p style="border-bottom: 1px solid black;"><span style="float: left;font-weight: bold;">' + this.util.translate('Total') + '</span> <span style="float: right;font-weight: bold;">' + this.util.translate('currencyCode') + this.grandTotal + '</span> </p> <h1 style="text-align: center;">' + this.util.translate(this.paid.toUpperCase()) + '</h1> </div>';
+    const minimumPurchaseChargeText = this.minimumPurchaseCharge
+      ? `<p style="border-bottom: 1px solid black;"><span style="float: left;font-weight: bold;">${this.util.translate('Under Minimum Charges')}</span> <span style="float: right;font-weight: bold;">${this.util.translate('currencyCode')} ${this.minimumPurchaseCharge}</span> </p>`
+      : '';
+
+    const content = '<div style="padding: 20px;display: flex;flex-direction: column;"> <img src="assets/icon.png" style="text-align: center; height: 100px;width: 100px;" alt=""> <h2 style="text-align: center;">' + title + '</h2> <p style="float: left;"><b>' + this.id + '</b></p> <p style="float: left;"><b>' + this.restName + '</b></p> <p style="float: left;"><b>' + userName + '</b></p> <p style="float: left;">' + this.time + ' </p> <p style="font-weight: bold;">' + this.util.translate('ITEMS') + '</p> ' + order + ' <p style="border-bottom: 1px solid black;"><span style="float: left;font-weight: bold;">' + this.util.translate('SubTotal') + '</span> <span style="float: right;font-weight: bold;">' + this.util.translate('currencyCode') + this.total + '</span> <p style="border-bottom: 1px solid black;"><span style="float: left;font-weight: bold;">' + this.util.translate('Delivery Charge') + '</span> <span style="float: right;font-weight: bold;">' + this.util.translate('currencyCode') + this.deliveryCharge + '</span> </p> ' + minimumPurchaseChargeText + ' <p style="border-bottom: 1px solid black;"><span style="float: left;font-weight: bold;">' + this.util.translate('Total') + '</span> <span style="float: right;font-weight: bold;">' + this.util.translate('currencyCode') + this.grandTotal + '</span> </p> <h1 style="text-align: center;">' + this.util.translate(this.paid.toUpperCase()) + '</h1> </div>';
     this.printer.print(content, options).then((data) => {
       console.log(data);
     }).catch(error => {
